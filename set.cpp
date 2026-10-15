@@ -86,10 +86,7 @@ void Set::insert(int e)
   if (iter != this->S.end() && *iter == e) // yes, don't insert again:
     return;
   
-  // no, so insert and sort:
-  this->S.push_back(e);
-
-  // sort(this->S.begin(), this->S.end());
+  this->S.insert(iter, e);
 }
 
 /** 
