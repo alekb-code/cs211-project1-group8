@@ -47,11 +47,6 @@ public:
 
   // removes e from the set if a member
   void remove(int e);
-
-
-/*
- * TODO for project 01: uncomment and implement in set.cpp
- *
  
   // THIS SET = THIS set intersect S2
   void intersection(const Set& S2);
@@ -64,9 +59,5 @@ public:
 
   // is THIS SET disjoint from S2 (i.e. no elements in common)?
   bool disjoint(const Set& S2) const;
-  
- *
- *
- */
  
 };

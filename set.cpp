@@ -103,3 +103,61 @@ void Set::remove(int e)
     this->S.erase(iter);
   }
 }
+
+void Set::difference(const Set& S2)
+{
+  vector<int> result;
+  result.reserve(this->S.size());
+
+  size_t i = 0, j = 0;
+  while (i < this->S.size())
+  {
+    if (j == S2.S.size() || this->S[i] < S2.S[j])
+    {
+      result.push_back(this->S[i]);
+      i++;
+    }
+    else if (this->S[i] == S2.S[j])
+    {
+      i++; 
+      j++;
+    }
+    else 
+    {
+      j++;
+    }
+  }
+
+  this->S.swap(result);
+}
+
+bool Set::disjoint(const Set& S2) const
+{
+  for (int x : S2.S){
+    if (std::binary_search(this->S.begin(), this->S.end(), x)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+void Set::intersection(const Set& S2)
+{
+  vector<int> newS;
+  for (int e : S2.S)
+  {
+    if (this->contains(e))
+    {
+      newS.push_back(e);
+    }
+  }
+  this->S = newS;
+}
+
+void Set::merge(const Set& S2)
+{
+  for (int e : S2.S)
+  {
+    this->insert(e);
+  }
+}
